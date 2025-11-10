@@ -118,6 +118,15 @@ docker run -it --rm debian:trixie-slim /bin/bash
 ```bash
 curl -s "https://get.sdkman.io" | bash
 ```
+
+:::warning
+Si `curl` n'est pas trouvé, exécutez :
+```bash
+apt update
+apt install -y curl
+```
+:::
+
 5. Lister les versions disponibles de Java :
 ```bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
