@@ -714,3 +714,31 @@ pnpm install
 pnpm run --filter <nom-du-sous-module> start
 ```
 Remplacer `<nom-du-sous-module>` par le nom du package défini dans le `package.json` du sous-module.
+
+## Problèmes courants
+
+- Mon conteneur ne démarre plus :
+  - Vérifiez le log, il est généralement explicite.
+  - Vérifiez que votre commande est bien `sleep infinity` pour rester en vie.
+  - Vérifiez que votre Dockerfile ne comporte pas d'erreurs de syntaxe.
+  - De manière générale, le problème vient souvent d'un changement que vous venez tout juste d'effectuer.
+- Les outils installés ne sont pas disponibles :
+  - Vérifiez que vous utilisez bien un terminal de votre conteneur (pas votre hôte local, pas votre hôte distant)
+  - Vérifiez que vous avez bien reconstruit le conteneur après avoir modifié
+- Je n'ai plus d'espace disque :
+  - Vérifiez que vous n'avez pas de conteneurs ou d'images orphelines.
+  - Nettoyez les volumes Docker inutilisés.
+  - Augmentez l'espace disque alloué à Docker si nécessaire et si possible :
+    - Allouez l'espace sur la partition contenant les données Docker (généralement dans /var)
+- Je perd l'interaction avec mon terminal distant/mon vscode distant :
+  - Vérifiez la connexion réseau entre votre hôte local et votre serveur distant.
+  - Vérifiez que le démon Docker sur le serveur distant est bien en cours d'exécution.
+  - Redémarrez la connexion SSH (ou VSCode) si nécessaire.
+- J'ai démarré mon application mais je n'arrive pas à y accéder depuis mon hôte local :
+  - Vérifiez que le port forwarding est bien configuré dans le fichier `devcontainer.json`.
+  - Vérifiez que le service dans le conteneur écoute bien sur le port attendu.
+  - Vérifiez qu'aucun pare-feu ou règle de sécurité ne bloque l'accès au port.
+  - Il peut simplement arriver que VSCode ne forward pas correctement le port. Vous pouvez l'ajouter manuellement via l'interface de gestion des ports sous VSCode : Onglet "Ports" voisin de l'onglet "Terminal".
+- Ma VM crash :
+  - Il peut s'agir d'un manque de mémoire vive. Malheureusement il n'y pas de solution radicale si ce n'est d'augmenter la mémoire allouée à votre machine hôte, si possible. Vous pouvez aussi essayer de réduire la consommation mémoire de vos conteneurs en optimisant l'exécution des services :
+    - Vous pouvez limiter la mémoire allouée à la JVM de Gradle via des variables d'environnement (ex: `GRADLE_OPTS="-Xmx512m"` pour limiter à 512Mo).
