@@ -100,7 +100,7 @@ gradle <module_name>:quarkusDev
 Run angular application:
 
 ```bash
-pnpm start --filter <apps-store-front>
+pnpm run --filter apps-store-front start
 ```
 
 ### Production deployment
