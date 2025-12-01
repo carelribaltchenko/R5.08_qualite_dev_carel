@@ -221,6 +221,12 @@ sudo swapon /swapfile
 
 Cette configuration augmente la taille du swap à 4 Go. Vous pouvez ajuster cette valeur en fonction de vos besoins. Notez cependant que l'utilisation de swap n'est pas aussi performante que la RAM physique ou virtuelle et que la place occupée par le swap se répercute directement sur votre disque dur.
 
+:::warning
+Faire un `swapoff` nécessitera un vidage complet du swap, ce qui peut prendre du temps si le swap est très utilisé et si la mémoire disponible est faible. Assurez-vous d'avoir suffisamment de mémoire libre avant d'exécuter cette commande.
+
+Vous pouvez aussi utiliser les commandes de création pour créer un second swapfile le temps d'ajuster les choses sans désactiver le swap existant.
+:::
+
 Vérifiez aussi que le swap disponible dans le conteneur correspond bien à vos attentes :
 
 ```bash
@@ -235,6 +241,46 @@ SwapTotal:       4194300 kB
 ```
 
 Vérifiez donc que la valeur affichée correspond bien à la taille que vous avez définie précédemment.
+
+### Compresser la RAM pour gagner de l'espace haute performance
+
+Si vous utilisez Linux, vous pouvez activer la compression de la RAM pour gagner de l'espace haute performance. Voici comment faire :
+
+1. Installez le paquet `zram-tools` :
+
+    ```bash
+    sudo apt update
+    sudo apt install zram-tools
+    ```
+
+2. Configurez `zram` en éditant le fichier `/etc/default/zramswap` :
+
+    ```bash
+    sudo nano /etc/default/zramswap
+    ```
+
+    ```
+    ALGO=lz4
+    PERCENT=150
+    PRIORITY=100
+    ```
+
+3. Redémarrez le service `zramswap` :
+
+    ```bash
+    sudo systemctl restart zramswap
+    ```
+
+4. Utilisez un swap "fallback" sur disque en complément :
+
+    ```bash
+    sudo fallocate -l 2G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon --priority 10 /swapfile
+    ```
+
+    La priorité plus basse (10) permet d'utiliser le swap sur disque uniquement lorsque la RAM compressée est saturé.
 
 ### Conclusion
 
