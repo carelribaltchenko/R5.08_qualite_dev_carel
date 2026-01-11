@@ -2,7 +2,7 @@ package org.ormi.priv.tfa.orderflow.productregistry.application;
 
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductId;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuId;
-
+/**
  * Interface scellée regroupant toutes les commandes métier pour les produits.
  *
  * <p>Les commandes représentent les intentions métier pour modifier l'état des produits.
@@ -15,8 +15,7 @@ import org.ormi.priv.tfa.orderflow.kernel.product.SkuId;
  *   <li>{@code UpdateProductNameCommand} : mettre à jour le nom d'un produit</li>
  *   <li>{@code UpdateProductDescriptionCommand} : mettre à jour la description d'un produit</li>
  * </ul>
- */
- * TODO: Complete Javadoc
+ 
  */
     /**
      * Commande pour enregistrer un nouveau produit dans le catalogue.
