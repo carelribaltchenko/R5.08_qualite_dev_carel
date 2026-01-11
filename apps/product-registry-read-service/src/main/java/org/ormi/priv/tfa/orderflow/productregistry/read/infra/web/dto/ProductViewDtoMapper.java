@@ -27,9 +27,6 @@ import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView;
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewCatalogRef;
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewEvent;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Mapper(componentModel = "cdi", builder = @Builder(disableBuilder = false), uses = {
         ProductIdMapper.class,
@@ -37,6 +34,13 @@ import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewE
         ProductViewDtoMapper.ProductViewDtoEventMapper.class,
         ProductViewDtoMapper.ProductViewDtoCatalogMapper.class
 }, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+/**
+ * Interface ProductViewDtoMapper.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.infra.web.dto</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public interface ProductViewDtoMapper {
     public ProductViewDto toDto(ProductView productView);
 

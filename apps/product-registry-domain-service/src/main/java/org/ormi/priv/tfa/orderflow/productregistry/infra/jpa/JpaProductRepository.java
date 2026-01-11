@@ -16,7 +16,21 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Implémentation JPA du référentiel ProductRepository.
+ *
+ * <p>Utilise Quarkus Panache et MapStruct pour persister les produits
+ * dans la base de données. Convertit entre l'entité JPA et l'agrégat de domaine.</p>
+ *
+ * <p>Opérations :</p>
+ * <ul>
+ *   <li>Sauvegarde (create ou update)</li>
+ *   <li>Recherche par ID</li>
+ *   <li>Vérification d'existence par SKU</li>
+ * </ul>
+ *
+ * @see ProductRepository pour le contrat
+ * @see ProductEntity pour l'entité JPA
+ * @see ProductJpaMapper pour le mappage domain/JPA
  */
 
 @ApplicationScoped
@@ -27,6 +41,13 @@ public class JpaProductRepository implements PanacheRepositoryBase<ProductEntity
     SkuIdMapper skuIdMapper;
 
     @Inject
+     /**
+      * Constructeur avec injection de dépendances.
+      *
+      * @param mapper le mappeur domain/JPA
+      * @param productIdMapper le mappeur ProductId/UUID
+      * @param skuIdMapper le mappeur SkuId/String
+      */
     public JpaProductRepository(ProductJpaMapper mapper, ProductIdMapper productIdMapper, SkuIdMapper skuIdMapper) {
         this.mapper = mapper;
         this.productIdMapper = productIdMapper;

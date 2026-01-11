@@ -8,10 +8,14 @@ import org.ormi.priv.tfa.orderflow.kernel.product.ProductEventV1.ProductNameUpda
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductEventV1.ProductRegistered;
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductEventV1.ProductRetired;
 
-/**
- * TODO: Complete Javadoc
- */
 
+/**
+ * Class ProductEventV1Envelope.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.kernel.product</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public abstract class ProductEventV1Envelope<E extends ProductEventV1> extends EventEnvelope<E> {
 
     public ProductEventV1Envelope(E event, Long sequence, Instant timestamp) {

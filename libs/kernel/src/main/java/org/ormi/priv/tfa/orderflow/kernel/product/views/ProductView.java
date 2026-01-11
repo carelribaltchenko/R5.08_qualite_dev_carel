@@ -16,7 +16,29 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 /**
- * TODO: Complete Javadoc
+ * Vue de lecture (Read Model) représentant un produit avec son historique complet.
+ *
+ * <p>Cette classe implémente le côté lecture du pattern CQRS. Elle est l'état
+ * projeté d'un produit après application de tous ses événements de domaine.
+ * Elle est optimisée pour les requêtes de lecture et contient des informations
+ * enrichies non présentes dans l'agrégat de domaine.</p>
+ *
+ * <p>Propriétés :</p>
+ * <ul>
+ *   <li>{@link #id} : l'identifiant unique du produit</li>
+ *   <li>{@link #version} : numéro de version (séquence du dernier événement)</li>
+ *   <li>{@link #skuId} : le numéro SKU du produit</li>
+ *   <li>{@link #name} : nom commercial actuel du produit</li>
+ *   <li>{@link #description} : description actuelle du produit</li>
+ *   <li>{@link #status} : état du cycle de vie actuel</li>
+ *   <li>{@link #catalogs} : liste des catalogues contenant ce produit</li>
+ *   <li>{@link #events} : historique complet des événements</li>
+ *   <li>{@link #createdAt} : date de création du produit</li>
+ *   <li>{@link #updatedAt} : date de dernière modification</li>
+ * </ul>
+ *
+ * @see ProductSummary pour une vue allégée du produit
+ * @see ProductEventType pour les types d'événements
  */
 
 @Getter

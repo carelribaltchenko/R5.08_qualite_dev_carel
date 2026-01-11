@@ -16,7 +16,21 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application pour l'enregistrement de nouveaux produits.
+ *
+ * <p>Gère le cas d'usage d'enregistrement d'un produit dans le catalogue.
+ * Encapsule la logique métier suivante :</p>
+ * <ul>
+ *   <li>Validation de l'unicité du SKU</li>
+ *   <li>Création du produit via l'agrégat Product</li>
+ *   <li>Persistence de l'agrégat</li>
+ *   <li>Enregistrement de l'événement ProductRegistered dans le journal d'événements</li>
+ *   <li>Publication de l'événement dans la boîte de sortie (Outbox) pour propagation vers la lecture</li>
+ * </ul>
+ *
+ * <p>Implémente le pattern CQRS et Event Sourcing.</p>
+ *
+ * @see RegisterProductService#handle(RegisterProductCommand) pour traiter une commande
  */
 
 @ApplicationScoped
@@ -27,6 +41,13 @@ public class RegisterProductService {
     OutboxRepository outbox;
 
     @Inject
+     /**
+      * Constructeur du service avec injection de dépendances.
+      *
+      * @param repository le référentiel des produits
+      * @param eventLog le référentiel du journal d'événements
+      * @param outbox le référentiel de la boîte de sortie
+      */
     public RegisterProductService(
         ProductRepository repository,
         EventLogRepository eventLog,
@@ -37,6 +58,16 @@ public class RegisterProductService {
         this.outbox = outbox;
     }
 
+     /**
+      * Traite une commande d'enregistrement de produit.
+      *
+      * <p>Crée un nouveau produit, le persiste, enregistre l'événement
+      * et publie le message via la boîte de sortie.</p>
+      *
+      * @param cmd la commande d'enregistrement
+      * @return l'identifiant du produit créé
+      * @throws IllegalArgumentException si le SKU existe déjà
+      */
     @Transactional
     public ProductId handle(RegisterProductCommand cmd) throws IllegalArgumentException {
         if (repository.existsBySkuId(cmd.skuId())) {

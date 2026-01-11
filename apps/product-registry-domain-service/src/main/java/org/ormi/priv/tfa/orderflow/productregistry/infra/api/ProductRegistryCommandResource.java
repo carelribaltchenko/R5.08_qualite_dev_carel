@@ -29,7 +29,22 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriInfo;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource REST pour les commandes de gestion de produits (écriture).
+ *
+ * <p>Expose les endpoints HTTP POST, PATCH, DELETE pour modifier les produits.
+ * Implémente le côté commande (Command) du pattern CQRS.</p>
+ *
+ * <p>Endpoints :</p>
+ * <ul>
+ *   <li>POST /products : enregistrer un nouveau produit</li>
+ *   <li>PATCH /products/{id}/name : mettre à jour le nom</li>
+ *   <li>PATCH /products/{id}/description : mettre à jour la description</li>
+ *   <li>DELETE /products/{id} : retirer un produit</li>
+ * </ul>
+ *
+ * @see RegisterProductService pour l'enregistrement
+ * @see UpdateProductService pour les mises à jour
+ * @see RetireProductService pour la retraite
  */
 
 @Path("/products")

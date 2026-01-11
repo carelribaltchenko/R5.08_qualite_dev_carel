@@ -8,7 +8,20 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * TODO: Complete Javadoc
+ * DTO représentant une vue complète de produit pour la sérialisation JSON/API.
+ *
+ * <p>Transfert d'objet pour la réponse HTTP GET /products/{id}.
+ * Contient tous les détails du produit avec son historique d'événements.</p>
+ *
+ * @param id l'UUID du produit
+ * @param skuId le numéro SKU
+ * @param name le nom du produit
+ * @param status l'état du produit (ACTIVE ou RETIRED)
+ * @param description la description du produit
+ * @param catalogs la liste des catalogues contenant ce produit
+ * @param events l'historique des événements du produit
+ * @param createdAt la date de création (ISO-8601)
+ * @param updatedAt la date de dernière mise à jour (ISO-8601)
  */
 
 public record ProductViewDto(

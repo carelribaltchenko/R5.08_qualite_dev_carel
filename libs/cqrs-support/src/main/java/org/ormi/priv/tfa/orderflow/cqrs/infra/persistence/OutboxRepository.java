@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.ormi.priv.tfa.orderflow.cqrs.infra.jpa.OutboxEntity;
 
-/**
- * TODO: Complete Javadoc
- */
 
+/**
+ * Interface OutboxRepository.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.cqrs.infra.persistence</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public interface OutboxRepository {
     void publish(OutboxEntity entity);
     List<OutboxEntity> fetchReadyByAggregateTypeOrderByAggregateVersion(String aggregateType, int limit, int maxRetries);

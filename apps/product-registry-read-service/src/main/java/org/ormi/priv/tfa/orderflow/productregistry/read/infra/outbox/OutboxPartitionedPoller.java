@@ -32,12 +32,14 @@ import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @ApplicationScoped
 @Startup
+/**
+ * Class OutboxPartitionedPoller.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.infra.outbox</p>
+ */
 public class OutboxPartitionedPoller {
 
     private static final int PARTITIONS = Runtime.getRuntime().availableProcessors();

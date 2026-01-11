@@ -7,10 +7,14 @@ import org.ormi.priv.tfa.orderflow.kernel.product.ProductId;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuId;
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView;
 
-/**
- * TODO: Complete Javadoc
- */
 
+/**
+ * Interface ProductViewRepository.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.kernel.product.persistence</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public interface ProductViewRepository {
     void save(ProductView productView);
     Optional<ProductView> findById(ProductId id);

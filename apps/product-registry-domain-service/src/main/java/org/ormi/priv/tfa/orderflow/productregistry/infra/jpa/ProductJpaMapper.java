@@ -8,9 +8,6 @@ import org.ormi.priv.tfa.orderflow.kernel.Product;
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductIdMapper;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Mapper(
     componentModel = "cdi",
@@ -18,6 +15,13 @@ import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
     uses = { ProductIdMapper.class, SkuIdMapper.class },
     unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
+/**
+ * Class ProductJpaMapper.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.infra.jpa</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public abstract class ProductJpaMapper {
 
     public abstract Product toDomain(ProductEntity entity);

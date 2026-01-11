@@ -5,12 +5,20 @@ import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
 /**
- * TODO: Complete Javadoc
+ * Point d'entrée de l'application Product Registry Domain Service.
+ *
+ * <p>Service Quarkus responsable des opérations d'écriture (commandes)
+ * et de la gestion du domaine (agrégats, événements).</p>
  */
 
 @QuarkusMain
 public class Main {
 
+    /**
+     * Lance l'application Quarkus.
+     *
+     * @param args les arguments de la ligne de commande
+     */
     public static void main(String... args) {
         Quarkus.run(
             ProductRegistryDomainApplication.class,

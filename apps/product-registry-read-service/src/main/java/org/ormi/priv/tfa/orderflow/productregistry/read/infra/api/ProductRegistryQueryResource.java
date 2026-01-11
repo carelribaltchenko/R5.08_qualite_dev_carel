@@ -21,12 +21,14 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Path("/products")
 @Produces(MediaType.APPLICATION_JSON)
+/**
+ * Class ProductRegistryQueryResource.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.infra.api</p>
+ */
 public class ProductRegistryQueryResource {
 
     private final ReadProductService readProductService;

@@ -22,7 +22,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant une vue de produit (Read Model) dans la base de lecture.
+ *
+ * <p>Mappage JPA pour persister les vues produits optimisées pour la lecture.
+ * Utilise un schéma dédié "read_product_registry" pour isoler les données de lecture.</p>
+ *
+ * <p>Colonnes :</p>
+ * <ul>
+ *   <li>{@link #id} : identifiant unique (UUID)</li>
+ *   <li>{@link #version} : numéro de version (séquence du dernier événement)</li>
+ *   <li>{@link #skuId} : numéro SKU (unique)</li>
+ *   <li>{@link #name} : nom actuel du produit</li>
+ *   <li>{@link #description} : description actuelle</li>
+ *   <li>{@link #status} : état du cycle de vie</li>
+ *   <li>{@link #events} : historique des événements en JSON</li>
+ *   <li>{@link #catalogs} : liste des catalogues en JSON</li>
+ *   <li>{@link #createdAt} : date de création</li>
+ *   <li>{@link #updatedAt} : date de dernière mise à jour</li>
+ * </ul>
+ *
+ * <p>Index :</p>
+ * <ul>
+ *   <li>Index sur SKU pour les recherches</li>
+ * </ul>
+ *
+ * @see JpaProductViewRepository pour le repository
+ * @see ProductViewJpaMapper pour le mappage
  */
 
 @Getter

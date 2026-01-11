@@ -18,7 +18,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant un message dans la boîte de sortie (Outbox).
+ *
+ * <p>Implémente le pattern Outbox pour garantir la livraison fiable des messages
+ * entre la base de domaine et la base de lecture. Les messages en attente sont
+ * traités asynchrone et supprimés après succès.</p>
+ *
+ * <p>Colonnes :</p>
+ * <ul>
+ *   <li>{@link #id} : identifiant auto-généré</li>
+ *   <li>{@link #attempts} : nombre de tentatives de livraison</li>
+ *   <li>{@link #nextAttemptAt} : date de la prochaine tentative</li>
+ *   <li>{@link #lastError} : dernier message d'erreur</li>
+ *   <li>{@link #sourceEvent} : référence à l'événement source</li>
+ * </ul>
+ *
+ * <p>Index :</p>
+ * <ul>
+ *   <li>Index sur nextAttemptAt pour identifier les messages prêts à être traités</li>
+ * </ul>
+ *
+ * @see JpaOutboxRepository pour le repository
+ * @see EventLogEntity pour l'entité d'événement source
  */
 
 @Getter

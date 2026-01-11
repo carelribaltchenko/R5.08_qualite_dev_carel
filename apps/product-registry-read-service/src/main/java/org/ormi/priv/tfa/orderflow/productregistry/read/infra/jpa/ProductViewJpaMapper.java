@@ -19,9 +19,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Mapper(
     componentModel = "cdi",
@@ -29,6 +26,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
     injectionStrategy = InjectionStrategy.CONSTRUCTOR,
     uses = {ProductIdMapper.class, SkuIdMapper.class, }
 )
+/**
+ * Interface ProductViewJpaMapper.
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.infra.jpa</p>
+ */
 public interface ProductViewJpaMapper {
 
     @Mapping(target = "events", expression = "java(productViewEventListToJsonNode(productView.getEvents(), objectMapper))")

@@ -17,7 +17,22 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application pour la mise à jour des propriétés des produits.
+ *
+ * <p>Gère les cas d'usage de modification des produits (nom et description).
+ * Pour chaque type de mise à jour :</p>
+ * <ul>
+ *   <li>Récupération du produit existant</li>
+ *   <li>Application de la modification via l'agrégat Product</li>
+ *   <li>Persistence de l'agrégat modifié</li>
+ *   <li>Enregistrement de l'événement de mise à jour dans le journal</li>
+ *   <li>Publication du message via la boîte de sortie</li>
+ * </ul>
+ *
+ * <p>Implémente le pattern CQRS et Event Sourcing.</p>
+ *
+ * @see UpdateProductService#handle(UpdateProductNameCommand)
+ * @see UpdateProductService#handle(UpdateProductDescriptionCommand)
  */
 
 @ApplicationScoped
@@ -28,6 +43,13 @@ public class UpdateProductService {
     OutboxRepository outbox;
 
     @Inject
+    /**
+     * Constructeur du service avec injection de dépendances.
+     *
+     * @param repository le référentiel des produits
+     * @param eventLog le référentiel du journal d'événements
+     * @param outbox le référentiel de la boîte de sortie
+     */
     public UpdateProductService(
         ProductRepository repository,
         EventLogRepository eventLog,
@@ -38,6 +60,12 @@ public class UpdateProductService {
         this.outbox = outbox;
     }
 
+    /**
+     * Traite une commande de mise à jour du nom d'un produit.
+     *
+     * @param cmd la commande de mise à jour du nom
+     * @throws IllegalArgumentException si le produit n'existe pas
+     */
     @Transactional
     public void handle(UpdateProductNameCommand cmd) throws IllegalArgumentException {
         Product product = repository.findById(cmd.productId())

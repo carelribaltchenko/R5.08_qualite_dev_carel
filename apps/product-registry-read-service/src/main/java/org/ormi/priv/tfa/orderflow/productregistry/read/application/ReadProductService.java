@@ -13,11 +13,13 @@ import io.smallrye.mutiny.Multi;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @ApplicationScoped
+/**
+ * Class ReadProductService.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.application</p>
+ */
 public class ReadProductService {
 
     private final ProductViewRepository repository;

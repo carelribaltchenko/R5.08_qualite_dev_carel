@@ -17,7 +17,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant un produit dans la base de données de domaine.
+ *
+ * <p>Mappage JPA pour persister l'agrégat Product. Utilise un schéma dédié "domain"
+ * pour isoler les données de domaine des données de lecture.</p>
+ *
+ * <p>Colonnes :</p>
+ * <ul>
+ *   <li>{@link #id} : identifiant unique (UUID)</li>
+ *   <li>{@link #name} : nom du produit</li>
+ *   <li>{@link #description} : description du produit</li>
+ *   <li>{@link #skuId} : numéro SKU (unique, 9 caractères max)</li>
+ *   <li>{@link #status} : état du cycle de vie (ACTIVE ou RETIRED)</li>
+ *   <li>{@link #version} : numéro de version pour le contrôle optimiste</li>
+ * </ul>
+ *
+ * <p>Index :</p>
+ * <ul>
+ *   <li>Clé unique sur skuId pour garantir l'unicité</li>
+ * </ul>
+ *
+ * @see JpaProductRepository pour l'implémentation du repository
  */
 
 @Getter

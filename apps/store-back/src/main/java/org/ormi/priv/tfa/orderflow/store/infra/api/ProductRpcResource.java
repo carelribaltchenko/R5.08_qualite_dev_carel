@@ -28,11 +28,32 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource RPC (Remote Procedure Call) pour les opérations produits.
+ *
+ * <p>Implémente une façade unifiée expasant tous les cas d'usage de gestion de produits
+ * (recherche, visualisation, enregistrement, mise à jour, retraite).</p>
+ *
+ * <p>Endpoints :</p>
+ * <ul>
+ *   <li>POST /products/registerProduct : enregistrer un nouveau produit</li>
+ *   <li>POST /products/updateProduct : mettre à jour un produit</li>
+ *   <li>POST /products/retireProduct : retirer un produit</li>
+ *   <li>POST /products/viewProduct : visualiser un produit</li>
+ *   <li>POST /products/searchProducts : rechercher des produits</li>
+ * </ul>
+ *
+ * @see ProductRegistryService pour les requêtes de lecture
+ * @see ProductRegistryDomainService pour les commandes d'écriture
  */
-
 @Path("/products")
 @Produces(MediaType.APPLICATION_JSON)
+/**
+ * Class ProductRpcResource.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.store.infra.api</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public class ProductRpcResource {
 
     @Inject

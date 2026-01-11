@@ -6,22 +6,57 @@ import org.ormi.priv.tfa.orderflow.cqrs.DomainEvent;
 import org.ormi.priv.tfa.orderflow.kernel.Product;
 
 /**
- * TODO: Complete Javadoc
+ * Interface scellée représentant les événements de domaine pour les produits (version 1).
+ *
+ * <p>Implémente le pattern Event Sourcing avec une version d'événement fixée à 1.
+ * Tous les événements produit héritent de cette interface et doivent définir
+ * leur payload associé.</p>
+ *
+ * <p>Événements supportés :</p>
+ * <ul>
+ *   <li>{@code ProductRegistered} : enregistrement initial d'un nouveau produit</li>
+ *   <li>{@code ProductNameUpdated} : mise à jour du nom du produit</li>
+ *   <li>{@code ProductDescriptionUpdated} : mise à jour de la description</li>
+ *   <li>{@code ProductRetired} : retraite d'un produit existant</li>
+ * </ul>
+ *
+ * @see DomainEvent pour l'interface parente
+ * @see ProductEventV1Envelope pour les enveloppes d'événement
  */
 
 public sealed interface ProductEventV1 extends DomainEvent {
     public static final int EVENT_VERSION = 1;
 
+    /**
+     * Retourne le type d'agrégat pour les événements produits.
+     *
+     * @return "Product" le type d'agrégat
+     */
     default String aggregateType() {
         return Product.class.getSimpleName();
     }
 
+    /**
+     * Retourne l'ID du produit affecté par cet événement.
+     *
+     * @return l'ID du produit
+     */
     ProductId productId();
 
+    /**
+     * Retourne l'UUID du produit (ID de l'agrégat).
+     *
+     * @return l'UUID du produit
+     */
     default UUID aggregateId() {
         return productId().value();
     }
 
+    /**
+     * Retourne la version du schéma d'événement produit.
+     *
+     * @return 1 (version actuelle)
+     */
     @Override
     default public int version() {
         return EVENT_VERSION;

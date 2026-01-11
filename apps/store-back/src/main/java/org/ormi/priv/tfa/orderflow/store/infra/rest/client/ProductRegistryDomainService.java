@@ -14,7 +14,18 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 
 /**
- * TODO: Complete Javadoc
+ * Client REST pour le service de domaine Product Registry.
+ *
+ * <p>Interface Quarkus MicroProfile Rest Client pour communiquer avec
+ * le service de domaine Product Registry Domain Service.</p>
+ *
+ * <p>Endpoints :</p>
+ * <ul>
+ *   <li>POST /products : enregistrer un nouveau produit</li>
+ *   <li>DELETE /products/{id} : retirer un produit</li>
+ *   <li>PATCH /products/{id}/name : mettre à jour le nom</li>
+ *   <li>PATCH /products/{id}/description : mettre à jour la description</li>
+ * </ul>
  */
 
 @ApplicationScoped

@@ -15,14 +15,42 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Getter
+/**
+ * Class Product.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.kernel</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public class Product {
     private static final Long INITIAL_VERSION = 1L;
 
+/**
+ * Entité d'agrégat produit dans le domaine métier de gestion de catalogue.
+ *
+ * <p>Cette classe représente un produit avec tous ses attributs et états de cycle de vie.
+ * Elle encapsule la logique métier relatif aux produits et gère les transitions d'état
+ * (enregistrement, mise à jour, retraite).</p>
+ *
+ * <p>Elle implémente le pattern Aggregate Root du Domain-Driven Design (DDD) et
+ * utilise l'Event Sourcing pour tracer tous les changements d'état.</p>
+ *
+ * <p>Attributs principaux :</p>
+ * <ul>
+ *   <li>{@link #id} : Identifiant unique du produit</li>
+ *   <li>{@link #name} : Nom commercial du produit</li>
+ *   <li>{@link #description} : Description détaillée du produit</li>
+ *   <li>{@link #skuId} : Unité de gestion des stocks (Stock Keeping Unit)</li>
+ *   <li>{@link #status} : État du cycle de vie (ACTIF ou RETRAITÉ)</li>
+ *   <li>{@link #version} : Numéro de version pour le contrôle de concurrence</li>
+ * </ul>
+ *
+ * @see ProductLifecycle pour les états disponibles
+ * @see ProductId pour l'identifiant du produit
+ * @see SkuId pour le numéro SKU
+ */
     @NotNull
     private final ProductId id;
     @NotBlank

@@ -7,9 +7,6 @@ import org.ormi.priv.tfa.orderflow.productregistry.application.ProductCommand.Re
 import org.ormi.priv.tfa.orderflow.contracts.productregistry.v1.write.RegisterProductCommandDto;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @Mapper(
     componentModel = "cdi",
@@ -17,6 +14,13 @@ import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
     uses = { SkuIdMapper.class },
     unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
+/**
+ * Interface CommandDtoMapper.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.infra.web.dto</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public interface CommandDtoMapper {
     public RegisterProductCommand toCommand(RegisterProductCommandDto dto);
     public RegisterProductCommandDto toDto(RegisterProductCommand command);

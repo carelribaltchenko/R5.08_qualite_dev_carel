@@ -8,11 +8,13 @@ import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.subscription.MultiEmitter;
 import jakarta.enterprise.context.ApplicationScoped;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @ApplicationScoped
+/**
+ * Class ProductEventBroadcaster.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.application</p>
+ */
 public class ProductEventBroadcaster {
 
     private final CopyOnWriteArrayList<MultiEmitter<? super ProductStreamElementDto>> emitters = new CopyOnWriteArrayList<>();

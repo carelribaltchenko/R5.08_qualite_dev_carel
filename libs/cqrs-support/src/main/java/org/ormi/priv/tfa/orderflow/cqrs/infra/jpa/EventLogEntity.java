@@ -21,7 +21,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant un événement dans le journal d'événements.
+ *
+ * <p>Implémente l'Event Store pour persister tous les événements de domaine.
+ * Chaque événement est enregistré de manière immuable avec son contexte complet.</p>
+ *
+ * <p>Colonnes :</p>
+ * <ul>
+ *   <li>{@link #id} : identifiant auto-généré</li>
+ *   <li>{@link #aggregateType} : type d'agrégat affecté (Product, Order...)</li>
+ *   <li>{@link #aggregateId} : UUID de l'agrégat</li>
+ *   <li>{@link #aggregateVersion} : numéro de séquence de l'événement</li>
+ *   <li>{@link #eventType} : type d'événement (ProductRegistered...)</li>
+ *   <li>{@link #eventVersion} : version du schéma d'événement</li>
+ *   <li>{@link #occurredAt} : timestamp d'occurrence</li>
+ *   <li>{@link #payload} : données métier en JSON</li>
+ * </ul>
+ *
+ * <p>Index :</p>
+ * <ul>
+ *   <li>Index composite sur (aggregateType, aggregateId, aggregateVersion) pour les requêtes d'historique</li>
+ * </ul>
+ *
+ * @see JpaEventLogRepository pour le repository
+ * @see EventLogJpaMapper pour le mappage
  */
 
 @Getter
@@ -34,6 +57,13 @@ import lombok.Setter;
     indexes = {
         @Index(name = "ix_eventlog_aggregate", columnList = "aggregate_type, aggregate_id, aggregate_version")
     })
+/**
+ * Class EventLogEntity.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.cqrs.infra.jpa</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public class EventLogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

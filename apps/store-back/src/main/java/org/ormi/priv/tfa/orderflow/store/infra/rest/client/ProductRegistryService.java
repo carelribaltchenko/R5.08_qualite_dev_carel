@@ -12,12 +12,26 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 
 /**
- * TODO: Complete Javadoc
+ * Client REST pour le service de lecture Product Registry.
+ *
+ * <p>Interface Quarkus MicroProfile Rest Client pour communiquer avec
+ * le service de lecture Product Registry Read Service.</p>
+ *
+ * <p>Endpoints :</p>
+ * <ul>
+ *   <li>GET /products : rechercher les produits (paginé)</li>
+ *   <li>GET /products/{id} : récupérer un produit spécifique</li>
+ * </ul>
  */
 
 @ApplicationScoped
 @Path("/products")
 @RegisterRestClient(configKey = "product-registry-read-api")
+/**
+ * Interface ProductRegistryService.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.store.infra.rest.client</p>
+ */
 public interface ProductRegistryService {
 
     @GET

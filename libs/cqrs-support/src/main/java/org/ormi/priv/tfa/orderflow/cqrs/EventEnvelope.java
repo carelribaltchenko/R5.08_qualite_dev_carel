@@ -3,10 +3,14 @@ package org.ormi.priv.tfa.orderflow.cqrs;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * TODO: Complete Javadoc
- */
 
+/**
+ * Class EventEnvelope.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.cqrs</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public class EventEnvelope<E extends DomainEvent> {
     private final E event;
     private final Long sequence;

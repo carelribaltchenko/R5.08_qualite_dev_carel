@@ -17,11 +17,13 @@ import jakarta.inject.Inject;
 import jakarta.resource.spi.IllegalStateException;
 import jakarta.transaction.Transactional;
 
-/**
- * TODO: Complete Javadoc
- */
 
 @ApplicationScoped
+/**
+ * Class ProjectionDispatcher.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.read.application</p>
+ */
 public class ProjectionDispatcher {
     private static final String PRODUCT_AGGREGATE_TYPE = Product.class.getSimpleName();
 

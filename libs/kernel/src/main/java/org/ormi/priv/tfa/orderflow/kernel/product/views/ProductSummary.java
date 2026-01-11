@@ -12,7 +12,22 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 /**
- * TODO: Complete Javadoc
+ * Vue allégée d'un produit pour les listes paginées dans les requêtes de recherche.
+ *
+ * <p>Cette classe contient un sous-ensemble des propriétés d'un produit, optimisé
+ * pour l'affichage en listes. Elle est utilisée dans les résultats de recherche
+ * et les listes paginées.</p>
+ *
+ * <p>Propriétés :</p>
+ * <ul>
+ *   <li>{@link #id} : l'identifiant unique du produit</li>
+ *   <li>{@link #skuId} : le numéro SKU du produit</li>
+ *   <li>{@link #name} : nom commercial du produit</li>
+ *   <li>{@link #status} : état du cycle de vie du produit</li>
+ *   <li>{@link #catalogs} : nombre de catalogues contenant ce produit</li>
+ * </ul>
+ *
+ * @see ProductView pour la vue complète avec historique d'événements
  */
 
 @Getter

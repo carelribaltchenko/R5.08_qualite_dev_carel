@@ -14,10 +14,14 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
-/**
- * TODO: Complete Javadoc
- */
 @ApplicationScoped
+/**
+ * Class RetireProductService.
+ *
+ * <p>Package: org.ormi.priv.tfa.orderflow.productregistry.application</p>
+ *
+ * <p>Documentation générée automatiquement : compléter si besoin avec des détails métier.</p>
+ */
 public class RetireProductService {
 
     @Inject
